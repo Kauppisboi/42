@@ -6,7 +6,7 @@
 /*   By: jrignell <jere.rignell@aalto.fi>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:04:52 by jrignell          #+#    #+#             */
-/*   Updated: 2019/11/05 13:41:21 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/11/07 13:49:38 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static size_t	word_length(char const *s, char c, size_t j)
 	return (len);
 }
 
-char			**write_chars_to_array(char const *s, char **array,
+static char		**write_chars_to_array(char const *s, char **array,
 									char c, size_t j)
 {
 	size_t	i;
