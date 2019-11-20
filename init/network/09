@@ -1,0 +1,4 @@
+#nslookup 42.fr 8.8.8.8 | grep Address | tail -n 2 | cut -d ' ' -f 2
+
+163.172.250.13
+163.172.250.12

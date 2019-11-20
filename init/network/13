@@ -1,0 +1,8 @@
+# command: "nslookup 10.51.1.253" shows the information about the host: 
+
+Server:	   			 10.51.1.253
+Address:			 10.51.1.253#53
+
+253.1.51.10.in-addr.arpa	name = dhcp-ns1.hive.fi.
+
+# This command is used to resolving IP address to domain name.

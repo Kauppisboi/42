@@ -1,0 +1,67 @@
+1. list of network interfaces
+
+command: ifconfig -l
+
+2a. broadcasting
+
+Broadcasting in a computer network is transmitting a message which does not require a response to all users of the network.One computer in a network sends a data packet to all other users at the same time.
+The sender does not need to indicate recipient addresses – this is how the broadcast process differs from unicast, where only a single known recipient is addressed. The general advantage of broadcasting is that information can be distributed without having to be transmitted multiple times.
+
+command: ifconfig en0 | grep broadcast | cut -d ' ' -f 6
+
+2b. Identify all IP adresses which are part of the same subnet
+
+command: arp -a | cut -d ' ' -f 2
+
+3. Identify the MAC address of the Wi-Fi card
+
+MAC address: A media access control address (MAC address) of a device is a unique identifier assigned to a network interface controller (NIC). For communications within a network segment, it is used as a network address for most IEEE 802 network technologies, including Ethernet, Wi-Fi, and Bluetooth.
+
+command: ifconfig | grep "ether " | cut -d ' ' -f 2
+
+4. Identifiy the default gateway in the routing table
+
+command: netstat -rn | grep default | head -n 1 | awk '{print $2}'
+
+5. Identify the IP address of the DNS that responds to the following url: slash16.org
+
+command: dig slash16.org | grep slash | tail -n 4 | awk '{print $5}'
+
+6. Get the complete path of the file that contains the IP address of the DNS server you’re using
+
+Written in my own words: You can get the information about DNS server that I'm using if you type: "scutil --dns" or "cat /etc/resolv.conf". Both of these commands give you nameserver info, and on the same row is the IP address that you were looking for.
+
+7. Query an external DNS server on the slash16.org domain name
+
+command: nslookup slash16.org 8.8.8.8
+
+8.  Find the provider of slash16.org
+
+Written in my own words: You can just type in "whois slash16.org" and find the 'Name Server'-section which tells the provider of the slash16.org. 
+
+9. Find the external IP of 42.fr
+
+command: nslookup 42.fr 8.8.8.8
+
+Output: Server:		 	8.8.8.8
+Address:				8.8.8.8#53
+
+Non-authoritative answer:
+Name:			  42.fr
+Address: 163.172.250.13
+Name:	 42.fr
+Address: 163.172.250.12
+
+10. Identify the network devices between your computer and the slash16.org domain
+
+command: traceroute -w 1 slash16.org
+
+11. Use the output of the previous command to find the name and IP address of the device that makes the link between you (local network) and the outside world
+
+12. Find the IP that was assigned to you by dhcp server
+
+command: ipconfig getoption en0 server_identifier
+
+13. Thanks to the previous question and the reverse DNS find the name of your host
+
+command: nslookup 10.51.1.253

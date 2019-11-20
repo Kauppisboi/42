@@ -1,0 +1,1 @@
+Written in my own word: You can get the information about DNS server that I'm using if you type: scutil --dns or cat /etc/resolv.conf. Both of these commands give you nameserver info, and on the same row is the IP address that you were looking for.

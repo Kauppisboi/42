@@ -1,0 +1,2 @@
+2  nat (10.60.1.1)
+NAT = Network address translation. It is a technique to change original IP address of device (in case of many devices have same IP address) to IP which can identify certain device.
