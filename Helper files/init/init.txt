@@ -65,3 +65,11 @@ command: ipconfig getoption en0 server_identifier
 13. Thanks to the previous question and the reverse DNS find the name of your host
 
 command: nslookup 10.51.1.253
+
+14. What file contains the local DNS entries?
+
+File can be found: /etc/hosts
+
+15. Make the intra.42.fr address reroute to 46.19.122.85
+
+echo "46.19.122.85 intra.42.fr\n" >> /etc/hosts
