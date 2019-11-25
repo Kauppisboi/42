@@ -1,0 +1,4 @@
+Tutkimusysymys & tutkimuksen tavoite & rajaus
+Toimivan johdon ja hallituksen vastuuta yrityksen tietoturvakysymyksissä on tähän mennessä tutkittu akateemisesti lähinnä kyberturvallisuuden ja tietoturvan määrittelemisen näkökulmasta. Von Solms & van Niekerk (2013) perehtyivät määrittämään kyberturvallisuuden ja tietoturvan eroja sekä sitä, millä tavalla nämä ovat erotettavissa toisistaan ja millä tavalla ne kytkeytyvät toisiinsa. Von Solms & von Solms (2018) jatkoivat vuonna 2013 ilmestynyttä tutkimusta ja ottivat tähän tarkasteluun myös yritysjohdon ja hallituksen näkökulman.
+
+irc, 4 chars without a newline character, 8 chars w/o a nl char, 16 chars w/o a nl char, also, something like empty file w/o even a newline character in it?ä

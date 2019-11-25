@@ -1,0 +1,4 @@
+Heap memory = dynamic memory
+EOF = 26 in ascii
+Stack memory = normal variables goes here
+Static variable = preserves its value every time when the function is called.
