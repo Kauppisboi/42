@@ -1,0 +1,3 @@
+# 2. What command can you use to rename your system?
+
+sudo nano /etc/hostname
