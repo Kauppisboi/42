@@ -1,0 +1,5 @@
+# 15. Find the command that kills the background command’s process
+
+kill %%
+
+# This command kills the most recent background process

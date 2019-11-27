@@ -1,0 +1,5 @@
+# 8. What file contains the RSA keys of systems that are authorized to connect via SSH?
+
+~/.ssh/authorized_keys
+
+# When you are about to configure the remote server with your public key, the RSA key is generated into file "autorized_keys"
