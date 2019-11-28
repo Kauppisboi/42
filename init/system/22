@@ -1,0 +1,10 @@
+# 22. Find the command that add a new local user
+
+sudo useradd test
+
+# command adds user named "test" and it can configuration file can be found from /etc/default/useradd. This shows the default settings for new user.
+
+# You can add new home directory using useradd -m test
+# You can set a password with command passwd test. (If you are admin.)
+# su - test command changes between users
+# 'useradd -m <username> -G <groupname>' would add the user certain group

@@ -1,0 +1,4 @@
+# 23. Explain how connect yourself as new user. (With graphic session and ssh session)
+
+# Graphical: All the configuration work beforehand should have taken care all the user creation and this kind of stuff. So, new user just needs to input username & password when asked.
+# SSH: command is 'ssh user@<hostname or ip-address>' then just input password

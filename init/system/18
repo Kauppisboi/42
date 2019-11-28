@@ -1,0 +1,5 @@
+# 18. Find the command that kills ssh service
+
+sudo systemctl stop ssh
+
+# this command kills all the SSH connections. Kill <process number> kills the specific process

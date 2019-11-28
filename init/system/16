@@ -1,0 +1,11 @@
+# 16. Find the service which makes it possible to run specific tasks following a regular schedule
+
+# Crontab is one. And this is defined in wedsite: https://www.makeuseof.com/tag/linux-task-scheduling-crontab-explained/ : "If you’re serious about managing your time, you probably have a calendar of some sort — an app or at least a piece of paper. Crontab is very much like your computer’s calendar. It holds the information about scheduled tasks, telling cron which commands to run at what time.
+# In fact, several crontabs are on your system. Every user has their own crontab, including root (the administrator). User crontabs are stored in /var/spool/cron/crontabs/. The crontab -l command will list the crontab file for the current user. You can check the root crontab with sudo crontab -l."
+
+# This is how you can configure it (also from the same website^^): "It sounds simple: to schedule tasks, just add them to your crontab. Since crontab is a special configuration file, it’s not recommended to edit it manually. Instead, use the crontab -e command. To edit root or other users’ crontabs, run the command with administrative privileges and add their username after the -u option:"
+
+# sudo crontab -u root -e
+# sudo crontab -u username -e
+
+sudo crontab -u jrignell -e
