@@ -1,3 +1,7 @@
+_*_*_*_*
+NETWORK_*
+_*_*_*_*
+
 1. list of network interfaces
 
 command: ifconfig -l
@@ -73,3 +77,169 @@ File can be found: /etc/hosts
 15. Make the intra.42.fr address reroute to 46.19.122.85
 
 echo "46.19.122.85 intra.42.fr\n" >> /etc/hosts
+
+_*_*_*
+SYSTEM_*
+_*_*_*
+
+# 1. In what file can you find the installed version of your Debian?
+
+command : cat /etc/debian_version
+
+# 2. What command can you use to rename your system?
+
+sudo nano /etc/hostname
+
+# 3. What file has to be modified to make it permanent?
+/etc/hostname
+
+# 4. What command gives you the time since your system was last booted?
+
+last reboot | head -n 1
+
+# 5. Name the command that determines the state of the SSH service.
+
+service ssh status
+
+# 6. Name the command that reboots the SSH service.
+
+service ssh restart
+
+# 7. Figure out the PID of the SSHD service.
+
+cat /var/run/sshd.pid
+
+# or command: service ssh status | grep Main | awk -F '[ ]' '{print $3" " $4}'
+
+# 8. What file contains the RSA keys of systems that are authorized to connect via SSH?
+
+~/.ssh/authorized_keys
+
+# When you are about to configure the remote server with your public key, the RSA key is generated into file "autorized_keys"
+
+# 9. What command lets you know who is connected to the System?
+
+who
+
+# also "w" and "users" tell you info about this
+
+# 10. Name the command that lists the partition tables of drives?
+
+fdisk -l
+
+# 11. Name the command that displays the available space left and used on the system in an humanly understandable way
+
+df -h /
+
+# 12. Figure out the exact size of each folder of /var in a humanly understandable way followed by the path of it.
+
+sudo du -sh /var/*
+
+# 13. Name the command that find, in real time, currently running processes
+
+top
+
+# 14. Run the ‘tail -f /var/log/syslog‘ command in background
+
+‘tail -f /var/log/syslog‘ &
+
+# Moving a Job from the Foreground to the Background
+# CONTROL-Z and bg
+
+# 15. Find the command that kills the background command’s process
+
+kill %%
+
+# This command kills the most recent background process
+
+
+# 16. Find the service which makes it possible to run specific tasks following a regular schedule
+
+# Crontab is one. And this is defined in wedsite: https://www.makeuseof.com/tag/linux-task-scheduling-crontab-explained/ : "If you’re serious about managing your time, you probably have a calendar of some sort — an app or at least a piece of paper. Crontab is very much like your computer’s calendar. It holds the information about scheduled tasks, telling cron which commands to run at what time.
+# In fact, several crontabs are on your system. Every user has their own crontab, including root (the administrator). User crontabs are stored in /var/spool/cron/crontabs/. The crontab -l command will list the crontab file for the current user. You can check the root crontab with sudo crontab -l."
+
+# This is how you can configure it (also from the same website^^): "It sounds simple: to schedule tasks, just add them to your crontab. Since crontab is a special configuration file, it’s not recommended to edit it manually. Instead, use the crontab -e command. To edit root or other users’ crontabs, run the command with administrative privileges and add their username after the -u option:"
+
+# sudo crontab -u root -e
+# sudo crontab -u username -e
+
+sudo crontab -u jrignell -e
+
+
+# 17. Find the command that allows you to connect via ssh on the VM.(In parallel with the graphic session)
+
+ssh -p 25 jrignell@student.hive.fi
+
+# Hostname could be domain like hive.fi
+
+
+# 18. Find the command that kills ssh service
+
+sudo systemctl stop ssh
+
+# this command kills all the SSH connections. Kill <process number> kills the specific process
+
+# 19. List all services which are started at boot time and name this kind of services
+
+systemctl list-units --type service --all
+
+
+# 20. List all existing users on the VM
+
+awk -F: '{print $1}' /etc/group
+
+# 21. List all real users on the VM
+
+cut -d: -f1,3 /etc/passwd | egrep ':[0-9]{4}$' | cut -d: -f1
+
+
+# 22. Find the command that add a new local user
+
+sudo useradd test
+
+# command adds user named "test" and it can configuration file can be found from /etc/default/useradd. This shows the default settings for new user.
+
+# You can add new home directory using useradd -m test
+# You can set a password with command passwd test. (If you are admin.)
+# su - test command changes between users
+# 'useradd -m <username> -G <groupname>' would add the user certain group
+
+
+# 23. Explain how connect yourself as new user. (With graphic session and ssh session)
+
+# Graphical: All the configuration work beforehand should have taken care all the user creation and this kind of stuff. So, new user just needs to input username & password when asked.
+# SSH: command is 'ssh user@<hostname or ip-address>' then just input password
+
+
+# 24. Find the command that list all package
+
+apt list --installed
+
+
+_*_*_*_*_*
+SCRIPTING_*
+_*_*_*_*_*
+
+# 1. Write a script which displays only the login, UID and Path of each entry of the /etc/passwd file.
+#!/bin/sh
+getent passwd | awk -F: '{print $1, $3, $7}' | column -t
+
+# 2. Write a script which delete an ACTIVE user on the VM.
+#!/bin/bash
+echo "User that you want to delete: "
+read user
+check_if_exists=$(cat /etc/passwd | grep $user)
+if [[ $check_if_exists ]]; then
+    sudo passwd
+    if [ "$(pgrep -u $user)" != "$NULL" ]; then
+	sudo kill -9 $(pgrep -u $user)
+    fi
+    sudo userdel -r $user
+    echo "User: "$user" was successfully deleted."
+else
+    echo "User: "$user" does not exist."
+fi
+
+# 3. Three’s a Charm. Write a script of you choice.
+#!/bin/bash
+echo "Hello world!"
