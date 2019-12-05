@@ -7,7 +7,7 @@
 #    By: jrignell <jere.rignell@aalto.fi>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/18 13:33:40 by jrignell          #+#    #+#              #
-#    Updated: 2019/11/05 19:06:02 by jrignell         ###   ########.fr        #
+#    Updated: 2019/12/05 15:40:30 by jrignell         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -75,7 +75,8 @@ SRCS = ft_isalpha.c \
 	ft_lstdel.c \
 	ft_lstdelone.c \
 	ft_lstadd.c \
-	ft_lstiter.c
+	ft_lstiter.c \
+	get_next_line.c
 
 OBJ  = ft_isalpha.o \
     ft_isupper.o \
@@ -137,7 +138,8 @@ OBJ  = ft_isalpha.o \
     ft_lstdel.o \
     ft_lstdelone.o \
 	ft_lstadd.o \
-    ft_lstiter.o
+    ft_lstiter.o \
+	get_next_line.o
 
 INC = includes/
 
