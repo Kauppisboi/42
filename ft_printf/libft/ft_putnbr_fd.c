@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 16:20:21 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/11 18:44:53 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/13 19:34:29 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ void	ft_putnbr_fd(long long int n, int fd)
 {
 	long long int	num;
 
-	if (n < 0)
+	if (n == (long)(LONG_MIN))
+	{
+		write(1, "-9223372036854775808", 20);
+		return ;
+	}
+	else if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
 		num = (long long int)(n * -1);

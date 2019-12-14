@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_ull_fb.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 19:53:48 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/13 20:42:33 by jrignell         ###   ########.fr       */
+/*   Created: 2019/12/13 19:33:20 by jrignell          #+#    #+#             */
+/*   Updated: 2019/12/13 19:44:58 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_hex(long long int nbr, int upper)
+void	ft_putnbr_ull_fd(unsigned long long int n, int fd)
 {
-	if (nbr >= 16)
-		ft_print_hex(nbr / 16, upper);
-	nbr = nbr % 16;
-	if (upper)
-		nbr += (nbr < 10) ? '0' : 'A' - 10;
+	unsigned long long int	num;
+
+	num = 0;
+	if (n < 0)
+		num = (unsigned long long int)(n * -1);
 	else
-		nbr += (nbr < 10) ? '0' : 'a' - 10;
-	write(1, &nbr, 1);
+		num = n;
+	if (num >= 10)
+		ft_putnbr_ull_fd(num / 10, fd);
+	ft_putchar_fd((char)(num % 10 + '0'), fd);
 }

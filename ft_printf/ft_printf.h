@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:33:56 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/11 20:08:59 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/14 16:41:03 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct	s_struct
 
 int				ft_printf(const char *format, ...);
 int				ft_parse_str_char_ptr(char *str, va_list ap);
+int				ft_parse_hh_ll_diouxX(char *format, va_list ap);
+int				ft_parse_h_l_diouxX(char *format, va_list ap);
+int				ft_parse_diouxX(char *format, va_list ap);
 //t_syntax		ft_put_zero(void);
 
 #endif

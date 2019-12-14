@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 10:08:35 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/11 19:42:48 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:31:44 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 # define BUFF_SIZE 25
 # define FD_SIZE 4000
 
@@ -26,7 +27,11 @@ typedef struct		s_list
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
-void				ft_print_hex(long long int nbr);
+void				ft_print_hex(long long int nbr, int upper);
+void				ft_print_octal(long long nbr);
+void				ft_print_octal_ull(unsigned long long nbr);
+void				ft_putnbr_ull_fd(unsigned long long int n, int fd);
+void				ft_print_hex_ull(unsigned long long nbr, int upper);
 void				*ft_copy(void const *content, size_t content_size);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);

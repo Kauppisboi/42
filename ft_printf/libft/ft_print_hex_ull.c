@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_print_hex_ull.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 19:53:48 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/13 20:42:33 by jrignell         ###   ########.fr       */
+/*   Created: 2019/12/13 21:22:39 by jrignell          #+#    #+#             */
+/*   Updated: 2019/12/13 21:23:17 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_print_hex(long long int nbr, int upper)
+void	ft_print_hex_ull(unsigned long long nbr, int upper)
 {
 	if (nbr >= 16)
 		ft_print_hex(nbr / 16, upper);

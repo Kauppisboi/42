@@ -77,7 +77,11 @@ SRCS = ft_isalpha.c \
 	ft_lstadd.c \
 	ft_lstiter.c \
 	get_next_line.c \
-	ft_print_hex.c
+	ft_print_hex.c \
+	ft_print_octal.c \
+	ft_putnbr_ull_fb.c \
+	ft_print_hex_ull.c \
+	ft_print_octal_ull.c
 
 OBJ  = ft_isalpha.o \
     ft_isupper.o \
@@ -141,7 +145,11 @@ OBJ  = ft_isalpha.o \
 	ft_lstadd.o \
     ft_lstiter.o \
 	get_next_line.o \
-	ft_print_hex.o
+	ft_print_hex.o \
+	ft_print_octal.o \
+	ft_putnbr_ull_fb.o \
+	ft_print_hex_ull.o \
+	ft_print_octal_ull.o
 
 INC = includes/
 

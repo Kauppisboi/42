@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 14:57:34 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/11 20:57:50 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/14 16:52:41 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_syntax ft_put_zero(void)
 	return (ptr);
 }
 */
+
 static int		ft_check_type(char *format)
 {
 	char	*array;
@@ -48,9 +49,21 @@ int				ft_printf(const char *format, ...)
 	{
 		if (*format == '%' && (*(format + 1) == 's' || (*(format + 1) == 'c') || (*(format + 1) == 'p')))
 			ft_parse_str_char_ptr((char*)format++, ap);
-		else if (*format == '%' && ft_check_type((char*)(3 + format)) == 1 && ((*(format + 1) == 'h' && (*(format + 2)) == 'h') ||
-									((*(format + 1) == 'l' && (*(format + 2)) == 'l'))))
-			ft_parse_hh_ll((char*)format + 2);
+		else if (*format == '%' && ft_check_type((char*)(format + 3)) == 1 && (((*(format + 1) == 'h') && (*(format + 2) == 'h')) || ((*(format + 1) == 'l') && (*(format + 2) == 'l'))))
+		{
+			ft_parse_hh_ll_diouxX((char*)(format + 3), ap);
+			format += 3;
+		}
+		else if (*format == '%' && ft_check_type((char*)(format + 2)) == 1 && (*(format + 1) == 'h' || (*(format + 1) == 'l')))
+		{
+			ft_parse_h_l_diouxX((char*)(format + 2), ap);
+			format += 2;
+		}
+		else if (*format == '%' && ft_check_type((char*)(format + 1)) == 1)
+		{
+			ft_parse_diouxX((char*)(format + 1), ap);
+			format++;
+		}
 		else
 			write(1, format, 1);
 		format++;
