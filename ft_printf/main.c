@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 12:26:13 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/18 16:58:09 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/18 23:52:00 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int		main(void)
 	printf("%d %i %o %u %x %X\n", (int)(LONG_MAX), (int)(LONG_MIN), (signed)(16), (unsigned)(-1), 2, 3);
 	ft_printf("%d %i %o %u %x %X\n", (int)(LONG_MAX), (int)(LONG_MIN), (signed)(16), (unsigned)(-1), 2, 3);
 */
+/*
 	printf("%.10lf\n", (double)0.3);
 	float y;
 	int i = (3 << 2);
@@ -119,6 +120,7 @@ int		main(void)
 		y += 1.0;
 		i += 1;
 	}
-	printf("\n\n%d\n", ft_atoi_base("-12FDB3", 16));
+	*/
+	printf("\n\n%d\n", ft_atoi_base("0", 16));
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+         #
+#    By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 15:53:22 by jrignell          #+#    #+#              #
-#    Updated: 2019/12/18 12:27:44 by jrignell         ###   ########.fr        #
+#    Updated: 2019/12/18 22:36:12 by jrignell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

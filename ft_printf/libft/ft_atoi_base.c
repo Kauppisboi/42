@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:32:20 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/18 16:57:16 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/18 23:56:36 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			ft_atoi_base(const char *str, int str_base)
 {
 	int		sign;
 	int		i;
-	long	res;
+	int		res;
 
 	i = 0;
 	res = 0;
@@ -51,7 +51,7 @@ int			ft_atoi_base(const char *str, int str_base)
 	sign = (str[i] == '-') ? -1 : 1;
 	if (str[i] == '-' || str[i] == '+')
 		++i;
-	while (ft_isbase(str[i], str_base))
+	while (ft_isbase(str[i], str_base) && str[i])
 		res = res * str_base + ft_right_value(str[i++]);
 	return (res * sign);
 }
