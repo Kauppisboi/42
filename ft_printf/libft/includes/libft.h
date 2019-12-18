@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 10:08:35 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/14 15:31:44 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/18 16:29:58 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_print_hex(long long int nbr, int upper);
 void				ft_print_octal(long long nbr);
 void				ft_print_octal_ull(unsigned long long nbr);
+int					ft_atoi_base(const char *str, int str_base);
+char				*ft_itoa_base(int value, int base);
 void				ft_putnbr_ull_fd(unsigned long long int n, int fd);
 void				ft_print_hex_ull(unsigned long long nbr, int upper);
 void				*ft_copy(void const *content, size_t content_size);

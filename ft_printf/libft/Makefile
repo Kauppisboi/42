@@ -81,7 +81,8 @@ SRCS = ft_isalpha.c \
 	ft_print_octal.c \
 	ft_putnbr_ull_fb.c \
 	ft_print_hex_ull.c \
-	ft_print_octal_ull.c
+	ft_print_octal_ull.c \
+	ft_atoi_base.c
 
 OBJ  = ft_isalpha.o \
     ft_isupper.o \
@@ -149,7 +150,8 @@ OBJ  = ft_isalpha.o \
 	ft_print_octal.o \
 	ft_putnbr_ull_fb.o \
 	ft_print_hex_ull.o \
-	ft_print_octal_ull.o
+	ft_print_octal_ull.o \
+	ft_atoi_base.o
 
 INC = includes/
 

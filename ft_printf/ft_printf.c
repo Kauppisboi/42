@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 14:57:34 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/14 16:52:41 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:18:49 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int				ft_printf(const char *format, ...)
 			ft_parse_diouxX((char*)(format + 1), ap);
 			format++;
 		}
+		else if (*format == '%' && *(format + 2) == 'f' && (*(format + 1) == 'L' || (*(format + 1) == 'l')))
+			ft_parse_l_L_f((char*)(format + 2), ap);
 		else
 			write(1, format, 1);
 		format++;
