@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 10:08:35 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/18 16:29:58 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/22 14:41:51 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,20 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 # define BUFF_SIZE 25
 # define FD_SIZE 4000
+# define FT_ULONG_MAX 18446744073709551615
+# define FT_LONG_MAX 9223372036854775807
+# define FT_LONG_MIN -9223372036854775808
+# define FT_UINT_MAX 4294967295
+# define FT_INT_MAX 2147483647
+# define FT_INT_MIN -2147483648
+# define FT_USHRT_MAX 65535
+# define FT_SHRT_MAX 32767
+# define FT_SHRT_MIN -32768
+# define FT_CHAR_MAX 127
+# define FT_CHAR_MIN -128
+# define FT_UCHAR_MAX 255
 
 typedef struct		s_list
 {
@@ -31,7 +42,8 @@ void				ft_print_hex(long long int nbr, int upper);
 void				ft_print_octal(long long nbr);
 void				ft_print_octal_ull(unsigned long long nbr);
 int					ft_atoi_base(const char *str, int str_base);
-char				*ft_itoa_base(int value, int base);
+char				*ft_itoa_base(long long int value, int base, int upper);
+char				*ft_itoa_base_u(unsigned long long int value, int base, int upper);
 void				ft_putnbr_ull_fd(unsigned long long int n, int fd);
 void				ft_print_hex_ull(unsigned long long nbr, int upper);
 void				*ft_copy(void const *content, size_t content_size);

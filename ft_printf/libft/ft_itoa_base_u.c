@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_base_u.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/16 18:51:07 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/22 14:42:13 by jrignell         ###   ########.fr       */
+/*   Created: 2019/12/21 16:56:26 by jrignell          #+#    #+#             */
+/*   Updated: 2019/12/22 14:42:31 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
 
-char	*ft_itoa_base(long long int value, int base, int upper)
+char	*ft_itoa_base_u(unsigned long long int value, int base, int upper)
 {
-	long long	n;
-	int			sign;
-	int			i;
-	char		*str;
+	unsigned long long	n;
+	int					sign;
+	int					i;
+	char				*str;
 
-	upper = (upper == 1) ? 'A' : 'a';
-	if (value == LONG_MIN)
-		return (ft_strcpy(ft_strnew(21), "-9223372036854775808"));
-	n = (value < 0) ? -value : value;
+	upper = (upper == 1) ? 'A' : 'a'; 
+	n = value;
 	sign = (value < 0 && base == 10) ? -1 : 0;
 	i = (sign == -1) ? 2 : 1;
-	while ((n /= base) >= 1)
+	while ((value /= base) >= 1)
 		i++;
-	n = (value < 0) ? -value : value;
 	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	str[i] = '\0';

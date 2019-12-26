@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_parse_f.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 16:20:21 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/19 15:01:43 by jrignell         ###   ########.fr       */
+/*   Created: 2019/12/21 17:45:25 by jrignell          #+#    #+#             */
+/*   Updated: 2019/12/21 17:48:03 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <limits.h>
+#include "ft_printf.h"
 
-void	ft_putnbr_fd(long long int n, int fd)
+static int	ft_parse_f(char *str_sub, va_list ap, unsigned len)
 {
-	long long int	num;
+	long double	printable;
 
-	if (n == LONG_MIN)
-	{
-		write(1, "-9223372036854775808", 20);
-		return ;
-	}
-	else if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		num = (long long int)(n * -1);
-	}
-	else
-		num = (long long int)n;
-	if (num >= 10)
-		ft_putnbr_fd(num / 10, fd);
-	ft_putchar_fd((char)(num % 10 + '0'), fd);
+	printable = va_arg(ap, double);
+	ft_check_previous_u(printable, str_sub, --len, 'x');
+}
+
+int			ft_parse_f(char *str_sub, va_list ap, unsigned len)
+{
+	return (0);
 }

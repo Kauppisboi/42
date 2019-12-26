@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+         #
+#    By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 15:53:22 by jrignell          #+#    #+#              #
-#    Updated: 2019/12/18 22:36:12 by jrignell         ###   ########.fr        #
+#    Updated: 2019/12/22 14:25:01 by jrignell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = libftprintf.a
 EXEC = ft_printf
 CFLAGS = -Wall -Wextra -Werror
 CC = gcc
-SRC = ft_printf.c ft_parse_str_char_ptr.c main.c ft_parse_hh_ll_diouxX.c \
-ft_parse_h_l_diouxX.c ft_parse_diouxX.c
+SRC = ft_printf.c ft_parse_diouxXf.c ft_parse_hh_h_ll_l.c\
+main.c
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
 all: $(NAME)

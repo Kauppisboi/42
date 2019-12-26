@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:33:56 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/18 12:15:48 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/22 14:08:36 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include "libft/includes/libft.h"
+# define FT_TYPES "diouxXf"
 
 # include <stdio.h> // DEV
 
@@ -30,11 +31,10 @@ typedef struct	s_struct
 */
 
 int				ft_printf(const char *format, ...);
-int				ft_parse_str_char_ptr(char *str, va_list ap);
-int				ft_parse_hh_ll_diouxX(char *format, va_list ap);
-int				ft_parse_h_l_diouxX(char *format, va_list ap);
-int				ft_parse_diouxX(char *format, va_list ap);
-int				ft_parse_l_L_f(char *format, va_list ap);
+int				ft_parse_diouxXf(char *str_sub, va_list ap, unsigned len);
+int				ft_parse_hh_h_ll_l(char *sub_str, long long printable, unsigned len);
+int				ft_parse_hh_h_ll_l_u(char *sub_str, unsigned long long printable,
+									unsigned len);
 //t_syntax		ft_put_zero(void);
 
 #endif

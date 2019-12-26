@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 12:26:13 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/18 23:52:00 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/22 13:49:19 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <limits.h>
 
 int		main(void)
 
@@ -53,10 +54,11 @@ int		main(void)
 ** %lld--> for long long int
 ** %llu--> for unsigned long long int
 */
-/*
-	printf("%hho %llo\n", (char)'b', (long long)3132132321321);
-	ft_printf("%hho %llo\n", (char)'b', (long long)3132132321321);
-*/
+
+	int i =	printf("%i %o %u %x %X\n", 213, 165, 123132, 159, 465);
+	printf("Real printf returns %d\n", i);
+	ft_printf("%i %o %u %x %X\n", 213, 165, 123132, 159, 465);
+
 /*
 **	CHECK %hhu and %llu
 */
@@ -108,7 +110,7 @@ int		main(void)
 	ft_printf("%d %i %o %u %x %X\n", (int)(LONG_MAX), (int)(LONG_MIN), (signed)(16), (unsigned)(-1), 2, 3);
 */
 /*
-	printf("%.10lf\n", (double)0.3);
+	printf("\n%.10lf\n", (double)0.3);
 	float y;
 	int i = (3 << 2);
 
@@ -120,7 +122,7 @@ int		main(void)
 		y += 1.0;
 		i += 1;
 	}
-	*/
-	printf("\n\n%d\n", ft_atoi_base("0", 16));
+	ft_putnbr(LONG_MIN);
+*/
 	return (0);
 }
