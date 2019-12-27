@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 15:33:56 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/22 14:08:36 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/27 13:19:42 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ typedef struct	s_struct
 }				t_syntax;
 */
 
-int				ft_printf(const char *format, ...);
-int				ft_parse_diouxXf(char *str_sub, va_list ap, unsigned len);
-int				ft_parse_hh_h_ll_l(char *sub_str, long long printable, unsigned len);
-int				ft_parse_hh_h_ll_l_u(char *sub_str, unsigned long long printable,
+int					ft_printf(const char *format, ...);
+int					ft_parse_diouxXf(char *str_sub, va_list ap, unsigned len);
+long long int		ft_parse_hh_h_ll_l(char *sub_str, long long printable, unsigned len);
+unsigned long long	ft_parse_hh_h_ll_l_u(char *sub_str, unsigned long long printable,
 									unsigned len);
+int					ft_check_if_dot(char *sub_str);
+int					ft_return_flag(char *sub_str);
 //t_syntax		ft_put_zero(void);
 
 #endif

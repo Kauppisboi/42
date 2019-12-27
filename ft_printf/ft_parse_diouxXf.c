@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_diouxXf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 16:32:49 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/22 15:13:51 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/27 11:41:40 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static char	*helper_for_check_prev(char *sub_str, unsigned long long printable,
 	else if (c == 'u')
 		return (ft_itoa_base_u(ft_parse_hh_h_ll_l_u(sub_str, printable, len),
 			10, 0));
+	return (0);
 }
 
 static int	ft_check_previous_u(char *sub_str, unsigned long long printable,
@@ -89,7 +90,7 @@ int			ft_parse_diouxXf(char *sub_str, va_list ap, unsigned int len)
 	else if (sub_str[len] == 'o')
 	{
 		printable_ll = va_arg(ap, unsigned long long);
-		return (ft_check_previous_u(sub_str, printable_ll, --len, 'o'));
+		return (ft_check_previous_u(sub_str, printable_ull, --len, 'o'));
 	}
 	else if (sub_str[len] == 'u')
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 12:26:13 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/22 13:49:19 by jrignell         ###   ########.fr       */
+/*   Updated: 2019/12/27 13:35:18 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int		main(void)
 ** %llu--> for unsigned long long int
 */
 
-	int i =	printf("%i %o %u %x %X\n", 213, 165, 123132, 159, 465);
-	printf("Real printf returns %d\n", i);
-	ft_printf("%i %o %u %x %X\n", 213, 165, 123132, 159, 465);
+//	int i =	printf("%i %o %u *%x %X\n", 213, 165, 123132, 159, 465);
+//	printf("Real printf returns %d\n", i);
+//	ft_printf("%i %o %u %x %X\n", 213, 165, 123132, 159, 465);
 
 /*
 **	CHECK %hhu and %llu
@@ -124,5 +124,9 @@ int		main(void)
 	}
 	ft_putnbr(LONG_MIN);
 */
+
+	printf("Two spaces%3d\n", 10);
+	int i = ft_strlen("10");
+	printf("%d\n", i);
 	return (0);
 }
