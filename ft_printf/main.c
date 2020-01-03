@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 12:26:13 by jrignell          #+#    #+#             */
-/*   Updated: 2019/12/27 13:35:18 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/01/03 12:24:36 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,6 @@ int		main(void)
 	ft_putnbr(LONG_MIN);
 */
 
-	printf("Two spaces%3d\n", 10);
-	int i = ft_strlen("10");
-	printf("%d\n", i);
+	printf("Two spaces %5d\n", 10);
 	return (0);
 }
