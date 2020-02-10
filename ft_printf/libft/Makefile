@@ -84,7 +84,9 @@ SRCS = ft_isalpha.c \
 	ft_print_octal_ull.c \
 	ft_atoi_base.c \
 	ft_itoa_base.c \
-	ft_itoa_base_u.c
+	ft_itoa_base_u.c \
+	ft_lftoa.c \
+	ft_putnbr_ll_fd.c
 
 OBJ  = $(patsubst %.c, %.o, $(SRCS))
 
