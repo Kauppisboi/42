@@ -1,35 +1,72 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2ft_parse_csp_percent.c                            :+:      :+:    :+:   */
+/*   ft_parse_csp_percent.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/15 14:29:55 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 17:30:56 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 15:47:20 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	ft_print_address(va_list ap, t_format *f)
+static void	print_output(t_format *f)
 {
-	long long int	address;
-	int				upper;
-	char			*tmp;
-	char			*tmp2;
+	if (f->dot)
+		f->prec <= f->length ? ft_putnstr(f->nbr, f->o_prec) : ft_putstr(f->nbr);
+	else
+		ft_putstr(f->nbr);
+}
 
-	upper = 0;
-	address = va_arg(ap, long long int);
+static void	calculate_width_prec(t_format *f)
+{//printf("\nength %d width %d minus %d prec %d dot %d ret %d\n", f->length, f->width, f->minus, f->prec, f->dot, f->ret);
+	if (f->dot && f->prec && f->prec <= f->length)
+	{
+		f->length = f->prec;
+	}
+	if (f->length >= f->width)
+		f->width = 0;
+	if (f->width > f->length)
+		f->width -= f->length;
+	if (f->format == 'p')
+		f->width -= 2;
+	f->width = f->width < 0 ? 0 : f->width;
+}
+
+static void	calculate_bytes(t_format *f)
+{
+	f->length = ft_strlen(f->nbr);
+//printf("\nlength %d width %d minus %d prec %d dot %d ret %d\n", f->length, f->width, f->minus, f->prec, f->dot, f->ret);
+	if (f->dot && !f->prec)
+		f->length = 0;
+	if (f->width && f->width >= f->length)
+		f->ret = f->width;
+	if (f->length >= f->width)
+		f->ret = (f->dot && !f->prec) ? : f->length;
+	if (f->dot && !f->width && f->prec < f->length)
+		f->ret -= f->length - f->prec;
+	f->ret -= f->format == 'p' ? 2 : 0;
+	calculate_width_prec(f);
+}
+static int	ft_print_address(va_list ap, t_format *f)
+{
+	long long	address;
+
+	address = va_arg(ap, long long);
 	f->null = address == 0 ? 1 : 0;
-	tmp = ft_itoa_base_u(address, 16, 0);
-	if (tmp == NULL)
-		exit(7);
-	tmp2 = ft_strjoin("0x", tmp);
-	if (tmp2 == NULL)
-		exit(7);
-	ft_strdel(&tmp);
-	f->nbr = tmp2;
+	f->nbr = f->null ? ft_strdup("0") : ft_itoa_base_u(address, 16, 0);
+	calculate_bytes(f);
+	f->ret += 2;
+	if (f->width && !f->minus)
+		ft_parse_width(f);
+	write(1, "0x", 2);
+	print_output(f);
+	if (f->width)
+		ft_parse_width(f);
+	ft_struct_del(f);
+	return (f->ret);
 }
 
 static void	ft_print_str(va_list ap, t_format *f)
@@ -39,56 +76,44 @@ static void	ft_print_str(va_list ap, t_format *f)
 	printable = va_arg(ap, char*);
 	f->null = printable == 0 ? 1 : 0;
 	f->nbr = printable ? ft_strdup(printable) : ft_strdup("(null)");
-	if (f->nbr == NULL)
-		exit(7);
 	printable = NULL;
 }
 
-static void	ft_parse_char(char c, t_format *f)
-{
-	char	str[2];
-
-	str[0] = c;
-	str[1] = '\0';
-	f->nbr = ft_strdup(str);
-	if (f->nbr == NULL)
-		exit(7);
-}
-
-static char	ft_handle_char(va_list ap, t_format *f)
-{
-	char	printable;
-
-	printable = va_arg(ap, int);
-	f->null = printable == 0 ? 1 : 0;
-	return (printable);
+static int	ft_parse_char(char c, t_format *f)
+{	
+	f->null = c == 0 ? 1 : 0;
+	f->nbr = ft_strnew(1);
+	*f->nbr = c;
+	calculate_bytes(f);
+	if (f->null)
+		f->width--;
+	if (f->null && !f->o_width)
+		f->ret++;
+	if (f->width && !f->minus)
+		ft_parse_width(f);
+	ft_putchar(*f->nbr);
+	if (f->width)
+		ft_parse_width(f);
+	ft_struct_del(f);
+	return (f->ret);
 }
 
 int			ft_parse_csp_percent(t_format *f, va_list ap)
 {
-	char	b;
-	int		len;
 
-	b = 0;
 	if (f->format == 'c' || f->format == '%')
-		ft_parse_char((f->format == '%') ? '%' : ft_handle_char(ap, f), f);
+		return (ft_parse_char(f->format == '%' ? '%' : va_arg(ap, int), f));
 	else if (f->format == 's')
 		ft_print_str(ap, f);
 	else if (f->format == 'p')
-		ft_print_address(ap, f);
-	if (f->format == 's' && f->dot)
-		ft_parse_precision(f);
+		return (ft_print_address(ap, f));
+	calculate_bytes(f);
+//	printf("\nlength %d width %d minus %d prec %d dot %d\n", f->length, f->width, f->minus, f->prec, f->dot);
+	if (f->width && !f->minus)
+		ft_parse_width(f);
+	print_output(f);
 	if (f->width)
 		ft_parse_width(f);
-	if (f->format == 'c' && f->null == 1)
-	{
-		f->minus ? ft_putchar('\0') : ft_putstr(f->nbr);
-		f->minus ? ft_putstr(f->nbr) : ft_putchar('\0');
-	}
-	else
-		ft_putstr(f->nbr);
-	len = f->format == 'c' && f->null == 1 ? ft_strlen(f->nbr) + 1
-		: ft_strlen(f->nbr);
 	ft_struct_del(f);
-	return (len);
+	return (f->ret);
 }

@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 14:57:34 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 19:59:30 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/17 18:05:16 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,14 @@ static void		ft_form_struct(t_format *f, char *format,
 	f->minus = (ft_strchr(f->s_str, '-') ? 1 : 0);
 	f->plus = (ft_strchr(f->s_str, '+') ? 1 : 0);
 	f->space = (ft_strchr(f->s_str, ' ') && !f->plus ? 1 : 0);
-	f->hash = (ft_strchr(f->s_str, '#') ? 1 : 0);
+	if ((c == 'o' || c == 'x' || c == 'X' || c == 'f') && ft_strchr(f->s_str, '#'))
+		f->hash = c == 'x' || c == 'X' ? 2 : 1;
 	f->prec = f->dot ? ft_if_precision_diouxs(f) : 0;
 	f->width = ft_check_if_width(f);
-	f->zero = (f->prec && (c == 'd' || c == 'i' || c == 'o'
-		|| c == 'x' || c == 'X')) ? 0 : iszero(f);
+	f->o_width = f->width;
+	f->o_prec = f->prec;
+	f->zero = (f->minus	|| (f->dot && (c == 'd' || c == 'i' || c == 'o' ||
+		c == 'u' || c == 'x' || c == 'X'))) ? 0 : iszero(f);
 }
 
 static int		ft_check_error(char *format)

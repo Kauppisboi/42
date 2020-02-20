@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 12:26:13 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 20:48:26 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 18:08:37 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,342 @@ ft_printf("  %i    %X    %lli    %u    %s    %hhi  ",
 ft_printf("  %x    %X    %o    %s    %lli    %hhi  ",
 			mx_u, mx_u, mx_u, mx_s, mx_lli, mx_c);
 */
-
-j += ft_printf("% +i", 12345);
 printf("\n");
-i += printf("%+i", 12345);
 
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR d & i                              **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%d", -1);
+j += ft_printf("%d", -1);
+i += printf("% d", -42);
+j += ft_printf("% d", -42);
+i += printf("%+d", 42);
+j += ft_printf("%+d", 42);
+i += printf("%+7i", 0);
+j += ft_printf("% +7i", 0);
+i += printf("%+-7.10i", -123456789);
+j += ft_printf("%+-7.10i", -123456789);
+i += printf("% -8.5i", 456);
+j += ft_printf("% -8.5i", 456);
+i += printf("% 10.5d", -216);
+j += ft_printf("% 10.5d", -216);
+i += printf("%07i", -54);
+j += ft_printf("%07i", -54);
+i += printf("% 10.5ld", -9223372036854775807);
+j += ft_printf("% 10.5ld", -9223372036854775807);
+i += printf("%+-5d", 0);
+j += ft_printf("%+-5d", 0);
+i += printf("%+5.d ", 0);
+j += ft_printf("%+5.d ", 0);
+i += printf("%.d %.0d", 0, 0);
+j += ft_printf("%.d %.0d", 0, 0);
+i += printf("%5.d ", 0);
+j += ft_printf("%5.d ", 0);
+i += printf("%04d ", -532);
+j += ft_printf("%04d ", -532);
+i += printf("%05d", 42);
+j += ft_printf("%05d", 42);
+i += printf("%.10d", -42);
+j += ft_printf("%.10d", -42);
+i += printf("%.2d", -1);
+j += ft_printf("%.2d", -1);
+i += printf("%03.2d", 0);
+j += ft_printf("%03.2d", 0);
+i += printf("%10.5d", 4242);
+j += ft_printf("%10.5d", 4242);
+i += printf("%-5d", 42);
+j += ft_printf("%-05d", 42);
+i += printf("%5d", -42);
+j += ft_printf("%5d", -42);
+j += ft_printf("%3d", 42);
+i += printf("%3d", 42);
+i += printf("%2.5d", -42);
+j += ft_printf("%2.5d", -42);
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR x & X                              **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%#3x", 0);
+j += ft_printf("%#3x", 0);
+i += printf("%#5.0x", 0);
+j += ft_printf("%#5.0x", 0);
+i += printf("%#X", 0);
+j += ft_printf("%#X", 0);
+i += printf("%#8.5x", 0);
+j += ft_printf("%#8.5x", 0);
+i += printf("%#7x", 0);
+j += ft_printf("%#7x", 0);
+i += printf("%#08x", 42);
+j += ft_printf("%#08x", 42);
+i += printf("%-#7x", 1);
+j += ft_printf("%-#7x", 1);
+i += printf("%#7x", 1);
+j += ft_printf("%#7x", 1);
+i += printf("%-2.7x", 3267);
+j += ft_printf("%-2.7x", 3267);
+i += printf("%#8.5lx", (unsigned long)1);
+j += ft_printf("%#8.5lx", 1);
+i += printf("%7x", 0);
+j += ft_printf("%+7x", 0);
+i += printf("%-7.10x", -123456789);
+j += ft_printf("%-7.10x", -123456789);
+i += printf("%#-8.5X", 9);
+j += ft_printf("%#-8.5X", 9);
+i += printf("%10.5x", -216);
+j += ft_printf("%10.5x", -216);
+i += printf("%07X", -54);
+j += ft_printf("%07X", -54);
+i += printf("%#10.5lx", -9223372036854775807);
+j += ft_printf("%#10.5lx", -9223372036854775807);
+i += printf("%-5X", 0);
+j += ft_printf("%-5X", 0);
+i += printf("%5.x ", 0);
+j += ft_printf("%5.x ", 0);
+i += printf("%.x %.0x", 0, 0);
+j += ft_printf("%.x %.0x", 0, 0);
+i += printf("%5.x ", 0);
+j += ft_printf("%5.x ", 0);
+i += printf("%04x ", -532);
+j += ft_printf("%04x ", -532);
+i += printf("%05x", 42);
+j += ft_printf("%05x", 42);
+i += printf("%.10x", -42);
+j += ft_printf("%.10x", -42);
+i += printf("%.2x", -1);
+j += ft_printf("%.2x", -1);
+i += printf("%03.2x", 0);
+j += ft_printf("%03.2x", 0);
+i += printf("%10.5X", 4242);
+j += ft_printf("%10.5X", 4242);
+i += printf("%-5X", 42);
+j += ft_printf("%-05X", 42);
+i += printf("%5X", -42);
+j += ft_printf("%5X", -42);
+j += ft_printf("%3X", 42);
+i += printf("%3X", 42);
+i += printf("%2.5X", -42);
+j += ft_printf("%2.5X", -42);
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR o                                  **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%#6o", 2500);
+j += ft_printf("%#6o", 2500);
+i += printf("%#7o", 1);
+j += ft_printf("%#7o", 1);
+i += printf("|%#.3o|", 0);
+j += ft_printf("|%#.3o|", 0);
+i += printf("|%#7o|", 0);
+j += ft_printf("|%#7o|", 0);
+i += printf("%#.5o", 21);
+j += ft_printf("%#.5o", 21);
+i += printf("%#8.5o", 0);
+j += ft_printf("%#8.5o", 0);
+i += printf("@moulitest: %#.o %#.0o", 0, 0);
+j += ft_printf("@moulitest: %#.o %#.0o", 0, 0);
+i += printf("%#o", 0);
+j += ft_printf("%#o", 0);
+i += printf("%-#7.4o", 1);
+j += ft_printf("%-#7.4o", 1);
+i += printf("%-2.7o", 3267);
+j += ft_printf("%-2.7o", 3267);
+i += printf("%7o", 0);
+j += ft_printf("%+7o", 0);
+i += printf("%-7.10o", -123456789);
+j += ft_printf("%-7.10o", -123456789);
+i += printf("%#6.5lo ", (unsigned long)1);
+j += ft_printf("%#6.5lo ", 1);
+i += printf("%#-8.5o ", 9);
+j += ft_printf("%#-8.5o ", 9);
+i += printf("%10.5o", -216);
+j += ft_printf("%10.5o", -216);
+i += printf("%07o", -54);
+j += ft_printf("%07o", -54);
+i += printf("%#10.5lo", -9223372036854775807);
+j += ft_printf("%#10.5lo", -9223372036854775807);
+i += printf("%-5o", 0);
+j += ft_printf("%-5o", 0);
+i += printf("%5.o ", 0);
+j += ft_printf("%5.o ", 0);
+i += printf("%.o %.0o", 0, 0);
+j += ft_printf("%.o %.0o", 0, 0);
+i += printf("%5.o ", 0);
+j += ft_printf("%5.o ", 0);
+i += printf("%04o ", -532);
+j += ft_printf("%04o ", -532);
+i += printf("%05o", 42);
+j += ft_printf("%05o", 42);
+i += printf("%.10o", -42);
+j += ft_printf("%.10o", -42);
+i += printf("%.2o", -1);
+j += ft_printf("%.2o", -1);
+i += printf("%03.2o", 0);
+j += ft_printf("%03.2o", 0);
+i += printf("%10.5o", 4242);
+j += ft_printf("%10.5o", 4242);
+i += printf("%-5o", 42);
+j += ft_printf("%-05o", 42);
+i += printf("%5o", -42);
+j += ft_printf("%5o", -42);
+j += ft_printf("%3o", 42);
+i += printf("%3o", 42);
+i += printf("%2.5o", -42);
+j += ft_printf("%2.5o", -42);
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR u                                  **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%07u", 1);
+j += ft_printf("%07u", 1);
+i += printf("%0u", 0);
+j += ft_printf("%0u", 0);
+i += printf("%07u", 1);
+j += ft_printf("%07u", 1);
+i += printf("%7u", 0);
+j += ft_printf("%7u", 0);
+i += printf("%-2.7u", 3267);
+j += ft_printf("%-2.7u", 3267);
+i += printf("%07u", 0);
+j += ft_printf("%07u", 0);
+i += printf("%-7.10u", -123456789);
+j += ft_printf("%-7.10u", -123456789);
+i += printf("%06.5lu ", (unsigned long)1);
+j += ft_printf("%06.5lu ", 1);
+i += printf("%-8.5u ", 9);
+j += ft_printf("%-8.5u ", 9);
+i += printf("%010.5u", -216);
+j += ft_printf("%010.5u", -216);
+i += printf("%07u", -54);
+j += ft_printf("%07u", -54);
+i += printf("%010.5lu", -9223372036854775807);
+j += ft_printf("%010.5lu", -9223372036854775807);
+i += printf("%-5u", 0);
+j += ft_printf("%-5u", 0);
+i += printf("%0.u %0.0u", 0, 0);
+j += ft_printf("%0.u %0.0u", 0, 0);
+i += printf("%05.u ", 0);
+j += ft_printf("%05.u ", 0);
+i += printf("%05.u ", 0);
+j += ft_printf("%05.u ", 0);
+i += printf("%04u ", -532);
+j += ft_printf("%04u ", -532);
+i += printf("%05u", 42);
+j += ft_printf("%05u", 42);
+i += printf("%0.10u", -42);
+j += ft_printf("%0.10u", -42);
+i += printf("%0.2u", -1);
+j += ft_printf("%0.2u", -1);
+i += printf("%03.2u", 0);
+j += ft_printf("%03.2u", 0);
+i += printf("%010.5u", 4242);
+j += ft_printf("%010.5u", 4242);
+i += printf("%-5u", 42);
+j += ft_printf("%-05u", 42);
+i += printf("%5u", -42);
+j += ft_printf("%5u", -42);
+j += ft_printf("%3u", 42);
+i += printf("%3u", 42);
+i += printf("%2.5u", -42);
+j += ft_printf("%2.5u", -42);
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR s                                  **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%.2s is a string", "this");
+j += ft_printf("%.2s is a string", "this");
+i += printf("%5.2s", "this");
+j += ft_printf("%5.2s", "this");
+i += printf("%3.s", "123");
+j += ft_printf("%3.s", "123");
+i += printf("%3.s", NULL);
+j += ft_printf("%3.s", NULL);
+i += printf("%5s", "goes over");
+j += ft_printf("%5s", "goes over");
+i += printf("%-15.15s", "hellohello1234");
+j += ft_printf("%-15.15s", "hellohello1234");
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR p                                  **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%5p", (void *)0);
+j += ft_printf("%5p", 0);
+i += printf("%15p", &"213");
+j += ft_printf("%15p", &"213");
+i += printf("%5p", NULL);
+j += ft_printf("%5p", NULL);
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR c                                  **
+**                                                                            **
+********************************************************************************
+*/
+/*
+i += printf("%c", '\0');
+j += ft_printf("%.2c", NULL);
+i += printf("%.0%");
+j += ft_printf("%.0%");
+i += printf("%-15c", '\0');
+j += ft_printf("%-15c", '\0');
+i += printf("%1c", '\0');
+j += ft_printf("%1c", '\0');
+i += printf("%15c", '2');
+j += ft_printf("%15c", '2');
+*/
+/*
+********************************************************************************
+**                                                                            **
+**                         CONVERSIONS FOR f                                  **
+**                                                                            **
+********************************************************************************
+*/
 
-//i += printf("%#.1f", 7.3);
+i += printf("%#-5.1f", 7.3);
+j += ft_printf("%#-5.1f", 7.3);
+/*
+i += printf("%05.0f", -7.3);
+j += ft_printf("%05.0f", -7.3);
+i += printf("%#.0f", 7.4);
+j += ft_printf("%#.0f", 7.4);
+i += printf("% 5.0f", 7.3);
+j += ft_printf("% 5.0f", 7.3);
+i += printf("%f", 7.3);
+j += ft_printf("%f", 7.3);
+i += printf("%.1f", 7.3);
+j += ft_printf("%.1f", 7.3);
+*/
+
 
 /*
 j += ft_printf("%#+ -05.2Lf	\n", 7.3);

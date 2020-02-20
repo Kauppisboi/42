@@ -6,7 +6,7 @@
 #    By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/05 15:53:22 by jrignell          #+#    #+#              #
-#    Updated: 2020/02/10 18:02:14 by jrignell         ###   ########.fr        #
+#    Updated: 2020/02/17 16:24:47 by jrignell         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ CC = gcc
 OBJ_DIR := ./obj
 INC_DIR := ./includes
 SRC_DIR := ./srcs
+DEB_DIR := ./debug
 
 SRC := 	ft_printf.c \
 		ft_parse_diouxf.c \
@@ -35,10 +36,19 @@ SRC := 	ft_printf.c \
 
 OBJ :=	$(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
+DEBUG := $(addprefix $(DEB_DIR)/,$(SRC:.c))
+
 all: $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+
+#$(DEB_DIR):
+#	@mkdir -p $(DEB_DIR)
+
+#$(DEB_DIR)/%.c:$(SRC_DIR)/%.c
+#	@$(CC) -g $(CFLAGS) -I $(INC_DIR) -I libft/includes 
+	#-o $@ -c $<
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -I $(INC_DIR) -o $@ -c $<
@@ -48,7 +58,6 @@ $(NAME): $(OBJ_DIR) $(OBJ)
 	@cp libft/libft.a ./libftprintf.a
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@$(CC) -o $(EXEC) $(NAME) main.c $(CFLAGS)
 
 clean:
 	@/bin/rm -rf $(OBJ)
@@ -61,7 +70,10 @@ fclean:
 
 re: fclean all
 
-compile: $(OBJ_DIR) $(OBJ)
+#debug: $(DEB_DIR) $(DEBUG)
+	
+
+main: $(OBJ_DIR) $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@$(CC) -o $(EXEC) $(NAME) main.c $(CFLAGS)

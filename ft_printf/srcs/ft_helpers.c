@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 12:20:05 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 18:07:47 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:06:35 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ void	ft_put_zero(t_format *f)
 	f->minus = 0;
 	f->plus = 0;
 	f->prec = 0;
-	f->f_num = 0;
-	f->u_num = 0;
-	f->num = 0;
 	f->s_str = NULL;
 	f->width = 0;
+	f->o_prec = 0;
+	f->o_width = 0;
 	f->space = 0;
 	f->zero = 0;
 	f->sign = 0;
 	f->length = 0;
+	f->ret = 0;
 	f->nbr = NULL;
 }
 
@@ -120,8 +120,9 @@ void	ft_struct_del(t_format *f)
 		ft_strdel(&f->s_str);
 	if (f->nbr)
 	{
-		free(f->nbr);
-		f->nbr = NULL;
+		ft_strdel(&f->nbr);
+//		free(f->nbr);
+//		f->nbr = NULL;
 	}
 	f = NULL;
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   3ft_parse_hh_h_ll_l.c                              :+:      :+:    :+:   */
+/*   ft_parse_hh_h_ll_l.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 16:11:35 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 17:31:13 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:32:53 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int			which_len(t_format *f)
+int		which_len(t_format *f)
 {
 	char	*c;
 	int		len;
@@ -37,7 +37,7 @@ int			which_len(t_format *f)
 	return (len);
 }
 
-void		hh_h_ll_l(t_format *f, long long print, int base, int upper)
+void	hh_h_ll_l(t_format *f, long long print, int base, int upper)
 {
 	if (f->len == 2 * 'l')
 		f->nbr = ft_itoa_base(print, base, upper);
@@ -51,8 +51,7 @@ void		hh_h_ll_l(t_format *f, long long print, int base, int upper)
 		f->nbr = ft_itoa_base(print, base, upper);
 }
 
-void		hh_h_ll_l_u(t_format *f, unsigned long long print,
-			int base, int upper)
+void	hh_h_ll_l_u(t_format *f, unsigned long long print, int base, int upper)
 {
 	if (f->len == 2 * 'l')
 		f->nbr = ft_itoa_base_u(print, base, upper);

@@ -2,3 +2,5 @@ ft_printf
 *.a
 init.sh
 main.c
+pft/
+pft/

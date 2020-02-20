@@ -1,2 +1,2 @@
-make compile
+make main
 ./ft_printf | cat -e

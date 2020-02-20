@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 18:51:07 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/02 17:44:58 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:12:00 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ char	*ft_itoa_base(long long int value, int base, int upper)
 	while ((n /= base) >= 1)
 		i++;
 	n = (value < 0) ? -value : value;
-	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+	if (!(str = ft_strnew(i)))
 		return (NULL);
+//	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
+//		return (NULL);
 	str[i] = '\0';
 	while (i-- + sign)
 	{

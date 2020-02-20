@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   2ft_parse_f.c                                      :+:      :+:    :+:   */
+/*   ft_parse_f.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 17:45:25 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 17:31:05 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 18:11:50 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,28 @@
 
 static int	ft_check_prev_f(t_format *f, long double print, int precision)
 {
-	int		len;
-
 	f->null = print == 0 ? 1 : 0;
 	f->nbr = ft_lftoa(print, precision);
-	if (!f->nbr)
-		exit (6);
-	f->sign = print >= 0 ? '+' : '-';
-	if (f->plus || f->space || f->hash)
-		ft_parse_flags(f);
-	if (f->width)
+	f->sign = print < 0 ? 1 : 0;
+	calculate_returnable_bytes(f);
+	if (f->width && !f->minus && f->sign && !f->zero)
 		ft_parse_width(f);
-	if (!f->nbr)
-		exit (6);
-	ft_putstr(f->nbr);
-	len = ft_strlen(f->nbr);
+	f->sign ? print_in_case_of_sign(f, 1) : 0;
+	if ((f->plus || f->space) && f->zero)
+		ft_parse_flags(f);
+	if (f->width && !f->minus)
+		ft_parse_width(f);
+	if ((f->plus || f->space) && !f->zero)
+		ft_parse_flags(f);
+	f->sign ? print_in_case_of_sign(f, 2) : ft_putstr(f->nbr);
+	if (ft_strchr(f->nbr, '.') && f->hash)
+		f->ret--;
+	if (f->hash)
+		ft_parse_flags(f);
+	if (f->width && f->minus && !f->zero)
+		ft_parse_width(f);
 	ft_struct_del(f);
-	return (len);
+	return (f->ret);
 }
 
 static int	ft_precision_f(t_format *f)

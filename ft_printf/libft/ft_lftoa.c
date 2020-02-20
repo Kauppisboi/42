@@ -6,7 +6,7 @@
 /*   By: jrignell <jrignell@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 14:27:09 by jrignell          #+#    #+#             */
-/*   Updated: 2020/02/10 17:29:31 by jrignell         ###   ########.fr       */
+/*   Updated: 2020/02/20 16:27:00 by jrignell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static char	*return_after_point(long double zero_point, int prec)
 	size_t	num;
 	int		temp;
 
-	decimal = ft_strnew(prec + 2);
+	decimal = ft_strnew(prec + 1);
 	i = 0;
 	num = 0;
 	temp = prec;
