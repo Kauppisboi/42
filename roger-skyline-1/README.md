@@ -66,4 +66,65 @@ sudo ufw status verbose
 #DOS (Denial of Sevice Attack)
 1. Install fail2ban package
 sudo apt install fail2ban
-2. 
+2. Copy file /etc/fail2ban/jail.config -> /etc/fail2ban/jail.local
+- jail.local file preserves all the info that jail.config consisted if it is modified
+3. Write these commands into jail.local file:
+[DEFAULT]
+
+bantime = 10m
+findtime = 10m
+maxretry = 5
+
+[sshd]
+enabled = true
+port = 50111
+filter = sshd
+maxretry = 2
+findtime = 60m
+bantime = 10m
+logpath = %/(sshd_log)s
+backend = %(sshd_backend)s
+
+[portscan]
+enabled = true
+filter = portscan
+logpath = /var/log/syslog/
+maxretry = 1
+findtime = 5m
+bantime = 10m
+
+[http-get-dos]
+enabled = true
+filter = http-get-dos
+logpath = /var/log/apache2/access.log
+maxretry = 15
+findtime = 5m
+bantime = 10m
+action = iptables[name=HTTP, port=http, protocol=tcp]
+
+4. Create 2 files: /etc/fail2ban/filter.d/http-get-dos.conf and /etc/fail2ban/filter.d/portscan.conf
+- add text to http-get-dos.conf:
+[Definition]
+failregex = ^<HOST> -.*"(GET|POST).*
+ignoreregex =
+
+- add text to portscan.conf:
+[Definition]
+failregex = UFW BLOCK.* SRC=<HOST>
+ignoreregex =
+
+5. Restart service:
+sudo ufw reload && sudo service fail2ban restart
+
+6. Activate fail2ban:
+sudo systemctl enable fail2ban
+
+7. Check fail2ban status:
+sudo systemctl status systemctl
+
+8. See rules added by fail2ban:
+sudo iptables -L
+
+9. Test with wrong username@rigth_ip_address to log with ssh, then run
+sudo fail2ban-client status sshd
+# to see total number of banned IPs
