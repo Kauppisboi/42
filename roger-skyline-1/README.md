@@ -38,8 +38,8 @@ iface enp0s3 inet static
 1. Create a publickey: ssh-keygen -t rsa
 2. Give your public key to the server: ssh-copy-id admin@10.12.10.126 -p 50111
 3. Modify file /etc/ssh/sshd_config to remove root login permit and password authentication:
-#PermitRootLogin yes --> PermitRootLogin no
-#PasswordAuthentication yes --> PasswordAuthentication no
+# PermitRootLogin yes --> PermitRootLogin no
+# PasswordAuthentication yes --> PasswordAuthentication no
 4. Then restart service:
 sudo service sshd sshd restart
 sudo service ssh status 
@@ -62,3 +62,8 @@ sudo ufw enable
 4. Check which rules are set:
 
 sudo ufw status verbose
+
+#DOS (Denial of Sevice Attack)
+1. Install fail2ban package
+sudo apt install fail2ban
+2. 
