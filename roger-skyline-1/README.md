@@ -159,8 +159,43 @@ sudo fail2ban-client status portscan
 #Disable Services That Won't Be Needed
 
 1. List all the services:
-sudo service --status-all
+sudo systemctl list-unit-files --type service --state enabled
 
-2. There's nothing extra services available right now so you don't need. However, you could disable services using:
+2. You can disable keyboard-setup.service & console-setup.service
 sudo systemctl disable SERVICE_NAME
 
+Services needed for this project:
+
+apache2.service                        enabled //for web server
+apparmor.service                       enabled //mandatory access controls
+autovt@.service                        enabled //for login
+cron.service                           enabled //for cron
+dbus-org.freedesktop.timesync1.service enabled //Network Time Synchronization
+fail2ban.service                       enabled //for fail2ban
+getty@.service                         enabled //login
+networking.service                     enabled //raises or downs the network interfaces
+rsyslog.service                        enabled //for logs
+ssh.service                            enabled //for ssh
+sshd.service                           enabled //for ssh
+syslog.service                         enabled //for logs
+systemd-timesyncd.service              enabled //for synchronizing the system clock across the network
+ufw.service                            enabled //for ufw
+
+#Script That Updates Packages
+
+1. Create file with command nano ~/scripts/update.sh:
+#!/bin/bash
+sudo apt-get update -y >> /var/log/update.log
+sudo apt-get upgrade -y >> /var/log/update.log
+
+2. Give file privileges:
+chmod +x update.sh
+
+3. Automate execution with crontab:
+crontab -e
+
+4. Add following lines in the crontab file:
+0 4 * * 0 /home/admin/scripts/update.sh &
+@reboot /home/admin/scripts/update.sh &
+
+#This executes the scripts every Sunday at 4AM and everytime rebooted
