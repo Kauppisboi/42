@@ -155,3 +155,12 @@ Use another VM (with different IP address) to scan your ports using
 nmap 10.12.180.126
 ->Then use your own VM to see whether portscan was reported. Use:
 sudo fail2ban-client status portscan
+
+#Disable Services That Won't Be Needed
+
+1. List all the services:
+sudo service --status-all
+
+2. There's nothing extra services available right now so you don't need. However, you could disable services using:
+sudo systemctl disable SERVICE_NAME
+
