@@ -199,3 +199,40 @@ crontab -e
 @reboot /home/admin/scripts/update.sh &
 
 #This executes the scripts every Sunday at 4AM and everytime rebooted
+
+#Create File That Monitors Changes in Crontab File & Sends Email to Root
+
+1. Install email
+sudo apt install mailutils
+
+2. Create file cron_monitor.sh & add lines:
+#!/bin/bash
+DIFF=$(diff /etc/crontab.backup /etc/crontab)
+cat /etc/crontab > /etc/crontab.backup
+if [ "$DIFF" != "" ]; then
+    echo "Crontab checked: file changed, this incident will be reported." | mail -s "Crontab has been modified" root
+fi
+
+3. Give file privileges:
+chmod +x cron_monitor.sh
+
+4. Edit crontab & add lines:
+0 4 * * * /home/admin/scripts/cron_monitor.sh &
+
+5. Setting up the email
+sudo apt install bsd-mailx -y
+
+6. Install postfix to be able to send email to root
+sudo apt install postfix -y
+SETTING UP - monitor:
+"LOCAL ONLY"
+Debian
+
+7. Edit file /etc/aliases:
+root: root
+
+8. Run command
+sudo newaliases
+
+9. Email has been set up:
+echo "This is message part!" | sudo mail -s "This is the subject of the message" root
