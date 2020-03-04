@@ -128,3 +128,30 @@ sudo iptables -L
 9. Test with wrong username@rigth_ip_address to log with ssh, then run
 sudo fail2ban-client status sshd
 # to see total number of banned IPs
+
+#Setting up Protection Against Port Scans
+
+1. sudo apt-get update && sudo apt-get install portsentry
+
+2. Stop service
+sudo /etc/init.d/portsentry stop
+
+3. Edit /etc/default/portsentry:
+TCP_MODE="atcp"
+UDP_MODE="audp"
+
+4. Edit /etc/portsentry/portsentry.conf:
+BLOCK_UDP="1"
+BLOCK_TCP="1"
+
+5. Uncomment in file /etc/portsentry/portsentry.conf
+KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
+
+6. Restart service
+sudo /etc/init.d/portsentry start
+
+7. TESTING
+Use another VM (with different IP address) to scan your ports using
+nmap 10.12.180.126
+->Then use your own VM to see whether portscan was reported. Use:
+sudo fail2ban-client status portscan
