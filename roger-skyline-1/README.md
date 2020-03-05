@@ -150,7 +150,11 @@ KILL_ROUTE="/sbin/iptables -I INPUT -s $TARGET$ -j DROP"
 6. Restart service
 sudo /etc/init.d/portsentry start
 
-7. TESTING
+7. Edit file /etc/portsentry/portsentry.ignore.static to allow yourself to nmap your own ports. Add line:
+10.12.180.126/30
+
+
+8. TESTING
 Use another VM (with different IP address) to scan your ports using
 nmap 10.12.180.126
 ->Then use your own VM to see whether portscan was reported. Use:
