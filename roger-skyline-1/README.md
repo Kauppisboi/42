@@ -236,3 +236,11 @@ sudo newaliases
 
 9. Email has been set up:
 echo "This is message part!" | sudo mail -s "This is the subject of the message" root
+
+#Don't Allow Users to Make Their Own Cron Jobs
+
+1. Create file /etc/cron.allow
+
+2. List users you want to have crontab privilages, add users to file:
+root
+admin
